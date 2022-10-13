@@ -15,7 +15,7 @@
     "type": "module",
     "scripts": {
         "lint": "eslint",
-        "test": "jest --watchAll"
+        "test": "jest --watchAll --collectCoverage --silent=false"
     },
     "babel": {
         "env": {
@@ -25,5 +25,8 @@
                 ]
             }
         }
+    },
+    "dependencies": {
+        "@types/jest": "^29.1.2"
     }
 }
