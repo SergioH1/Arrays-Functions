@@ -1,4 +1,13 @@
-import { push, length, pop, map, shift, some, unshift } from './methods.js';
+import {
+    push,
+    length,
+    pop,
+    map,
+    shift,
+    some,
+    unshift,
+    filter,
+} from './methods.js';
 
 describe('Given push function', () => {
     describe('When it is run with 0', () => {
@@ -52,18 +61,12 @@ describe('Given pop function', () => {
             expect(result).toBe(9);
         });
     });
-    describe('When it is run array', () => {
-        test('Then it should return array.length -1 ', () => {
-            const array = [6, 9];
-            const result = pop(array);
-            expect(result).not.toContain(9);
-        });
-    });
+
     describe('When it is run []', () => {
         test('Then it should return undefon ', () => {
-            const array = [6, 9];
+            const array = [];
             const result = pop(array);
-            expect(result).not.toContain(9);
+            expect(result).toBe(undefined);
         });
     });
 });
@@ -148,6 +151,19 @@ describe('Given unshift function', () => {
             const param2 = 15;
             unshift(array2, param2);
             expect(array2).toContain(param2);
+        });
+    });
+    describe('Given the function ', () => {
+        describe('When it is run with array,function', () => {
+            test('Them it should return a new array ', () => {
+                const array2 = [2, 3, 10, 23, 2, 15];
+                const myFunction = function isBiggerThan10(i) {
+                    return i > 10;
+                };
+                const result = filter(array2, myFunction);
+
+                expect(result).toStrictEqual([23, 15]);
+            });
         });
     });
 });

@@ -8,12 +8,11 @@ export function length(array) {
 }
 
 export function pop(array) {
-    if (array === []) return undefined;
-    else {
-        const param = array[array.length - 1];
-        array.length = array.length - 1;
-        return param;
-    }
+    if (array.length === 0) return undefined;
+
+    const param = array[array.length - 1];
+    array.length = array.length - 1;
+    return param;
 }
 
 export function shift(arrayShift) {
@@ -57,8 +56,9 @@ export function map(array, myFunction) {
 export function filter(array, myFunction) {
     const arrayFilter = [];
     for (let i = 0; i < array.length; i++) {
-        if (myFunction(array[i]));
-        push(arrayFilter, array[i]);
+        if (myFunction(array[i])) {
+            push(arrayFilter, array[i]);
+        }
     }
     return arrayFilter;
 }
