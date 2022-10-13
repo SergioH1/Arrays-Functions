@@ -4,7 +4,11 @@ export function push(array, item) {
 }
 
 export function length(array) {
-    return array.length;
+    let counter = 0;
+    array.forEach(() => {
+        counter++;
+    });
+    return counter;
 }
 
 export function pop(array) {
