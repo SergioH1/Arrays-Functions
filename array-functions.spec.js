@@ -7,6 +7,8 @@ import {
     some,
     unshift,
     filter,
+    find,
+    every,
 } from './array-functions.js';
 
 describe('Given push function', () => {
@@ -152,17 +154,73 @@ describe('Given unshift function', () => {
             expect(array2).toContain(param2);
         });
     });
-    describe('Given filter function ', () => {
-        describe('When it is run with array,function', () => {
-            test('Them it should return a new array ', () => {
-                const array2 = [2, 3, 10, 23, 2, 15];
-                const myFunction = function isBiggerThan10(i) {
-                    return i > 10;
-                };
-                const result = filter(array2, myFunction);
+});
+describe('Given filter function ', () => {
+    describe('When it is run with array,function', () => {
+        test('Them it should return a new array ', () => {
+            const array2 = [2, 3, 10, 23, 2, 15];
+            const myFunction = function isBiggerThan10(i) {
+                return i > 10;
+            };
+            const result = filter(array2, myFunction);
 
-                expect(result).toStrictEqual([23, 15]);
-            });
+            expect(result).toStrictEqual([23, 15]);
+        });
+    });
+});
+describe('Given find function', () => {
+    describe('When it is run with array,function', () => {
+        test(`Then it should return a first element that satisfies 
+        the provided testing function`, () => {
+            const array3 = [2, 3, 11, 23, 2, 15];
+            const myFunction = function isBiggerThan10(i) {
+                return i > 10;
+            };
+            const result = find(array3, myFunction);
+            expect(result).toBe(11);
+        });
+        test('Then it should return a undefined ', () => {
+            const array3 = [2, 3, 1, 2, 2];
+            const myFunction = function isBiggerThan10(i) {
+                return i > 10;
+            };
+            const result = find(array3, myFunction);
+            expect(result).toBe(undefined);
+        });
+    });
+});
+describe('Given every function', () => {
+    describe('When it is run with array,function ', () => {
+        test('Them it should return true   ', () => {
+            const array4 = [15, 12, 13, 12, 11];
+            const myFunction = function isBiggerThan10(i) {
+                return i > 10;
+            };
+            const result = every(array4, myFunction);
+
+            expect(result).toBe(true);
+        });
+    });
+    describe('When it is run with array,function ', () => {
+        test('Them it should return false ', () => {
+            const array4 = [15, 12, 13, 8, 11];
+            const myFunction = function isBiggerThan10(i) {
+                return i > 10;
+            };
+            const result = every(array4, myFunction);
+
+            expect(result).toBe(false);
+        });
+    });
+    describe('When it is run with [],function ', () => {
+        test('Them it should return true ', () => {
+            const array4 = [];
+            const myFunction = function isBiggerThan10(i) {
+                return i > 10;
+            };
+            const result = every(array4, myFunction);
+
+            expect(result).toBe(true);
         });
     });
 });
