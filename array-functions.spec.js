@@ -7,7 +7,7 @@ import {
     some,
     unshift,
     filter,
-} from './methods.js';
+} from './array-functions.js';
 
 describe('Given push function', () => {
     describe('When it is run with 0', () => {
@@ -46,9 +46,9 @@ describe('Given push function', () => {
 describe('Given length function', () => {
     describe('When it is run [3]', () => {
         test('Then it should return aData.length', () => {
-            const aData = [3];
+            const aData = [1];
             const result = length(aData);
-            expect(result).toBe(aData.length);
+            expect(result).toBe(1);
         });
     });
 });
@@ -121,9 +121,7 @@ describe('Given some function', () => {
     describe('When it is run with array2,function i>10', () => {
         test('Then it should return false ', () => {
             const array2 = [2, 3, 9, 0, 1];
-            const param2 = function isBiggerThan10(i) {
-                return i > 10;
-            };
+            const param2 = (i) => i * 0;
             const result = some(array2, param2);
             expect(result).toBe(false);
         });
@@ -140,21 +138,21 @@ describe('Given some function', () => {
     });
 });
 describe('Given unshift function', () => {
-    describe('When it is run with array,item', () => {
+    describe('When it is run with array2 and 15', () => {
         test('Then it should return array.length  ', () => {
             const array2 = [2, 3, 9];
             const param2 = 15;
             const result = unshift(array2, param2);
             expect(result).toBe(4);
         });
-        test('Then it should return array.length  ', () => {
+        test('Then it should changes the array by entering the number 15', () => {
             const array2 = [2, 3, 9];
             const param2 = 15;
             unshift(array2, param2);
             expect(array2).toContain(param2);
         });
     });
-    describe('Given the function ', () => {
+    describe('Given filter function ', () => {
         describe('When it is run with array,function', () => {
             test('Them it should return a new array ', () => {
                 const array2 = [2, 3, 10, 23, 2, 15];
