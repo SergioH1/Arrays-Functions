@@ -1,4 +1,4 @@
-# Initial-Config
+# Arrays-Functions
 
 Configuración inicial eslint - jest - babel-
 
