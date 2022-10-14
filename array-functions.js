@@ -1,81 +1,85 @@
-export function push(array, item) {
-    array[array.length] = item;
-    return array.length;
+import {
+    errorArrayControl,
+    errorFunctionControl,
+    errorValueControl,
+} from './utils';
+
+export function push(value, item) {
+    errorArrayControl(value);
+    value[value.length] = item;
+    return value.length;
 }
 
-export function length(array) {
+export function length(value) {
+    errorArrayControl(value);
     let counter = 0;
-    array.forEach(() => {
+
+    value.forEach(() => {
         counter++;
     });
     return counter;
 }
 
-export function pop(array) {
-    if (array.length === 0) return undefined;
+export function pop(value) {
+    errorArrayControl(value);
+    if (value.length === 0) return undefined;
 
-    const param = array[array.length - 1];
-    array.length = array.length - 1;
+    const param = value[value.length - 1];
+    value.length = value.length - 1;
     return param;
 }
 
-export function shift(arrayShift) {
+export function shift(value) {
+    errorArrayControl(value);
     let counter = 0;
-    const item = arrayShift[0];
-    if (arrayShift.length === 0) return undefined;
+    const item = value[0];
+    if (value.length === 0) return undefined;
 
-    for (let i = 1; i < arrayShift.length; i++) {
-        arrayShift[counter] = arrayShift[i];
+    for (let i = 1; i < value.length; i++) {
+        value[counter] = value[i];
         counter++;
     }
-    pop(arrayShift);
+    pop(value);
     return item;
 }
-export function unshift(array, item) {
+export function unshift(value, item) {
+    errorArrayControl(value);
+    errorValueControl(item);
     const counter = [item];
-    for (let i = 0; i < array.length; i++) {
-        push(counter, array[i]);
+    for (let i = 0; i < value.length; i++) {
+        push(counter, value[i]);
     }
     for (let i = 0; i < counter.length; i++) {
-        array[i] = counter[i];
+        value[i] = counter[i];
     }
-    return array.length;
+    return value.length;
 }
 
-export function some(arraySome, myFunction) {
-    for (let i = 0; i < arraySome.length; i++) {
-        if (myFunction(arraySome[i])) return true;
+export function some(value, myFunction) {
+    errorArrayControl(value);
+    errorFunctionControl(myFunction);
+    for (let i = 0; i < value.length; i++) {
+        if (myFunction(value[i])) return true;
     }
     return false;
 }
-export function map(array, myFunction) {
+export function map(value, myFunction) {
+    errorArrayControl(value);
+    errorFunctionControl(myFunction);
     const mapArray2 = [];
-    for (let i = 0; i < array.length; i++) {
-        push(mapArray2, myFunction(array[i]));
+    for (let i = 0; i < value.length; i++) {
+        push(mapArray2, myFunction(value[i]));
     }
     return mapArray2;
 }
 
-export function filter(array, myFunction) {
+export function filter(value, myFunction) {
+    errorFunctionControl(myFunction);
     const arrayFilter = [];
-    for (let i = 0; i < array.length; i++) {
-        if (myFunction(array[i])) {
-            push(arrayFilter, array[i]);
+    for (let i = 0; i < value.length; i++) {
+        if (myFunction(value[i])) {
+            push(arrayFilter, value[i]);
         }
     }
     return arrayFilter;
 }
-export function forEach(array, myFunction) {
-    for (let i = 0; i < array.length; i++) {
-        myFunction[i];
-    }
-}
-function alphabetPosition(text) {
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] === '') {
-        }
-    }
-    Array.from(text);
-}
-
-console.log(alphabetPosition('test '));
