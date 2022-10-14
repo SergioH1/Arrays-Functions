@@ -74,6 +74,7 @@ export function map(value, myFunction) {
 }
 
 export function filter(value, myFunction) {
+    errorArrayControl(value);
     errorFunctionControl(myFunction);
     const arrayFilter = [];
     for (let i = 0; i < value.length; i++) {
@@ -82,4 +83,41 @@ export function filter(value, myFunction) {
         }
     }
     return arrayFilter;
+}
+export function find(value, myFunction) {
+    errorArrayControl(value);
+    errorFunctionControl(myFunction);
+
+    for (let i = 0; i < value.length; i++) {
+        if (myFunction(value[i])) {
+            return value[i];
+        }
+    }
+    return undefined;
+}
+export function every(value, myFunction) {
+    errorArrayControl(value);
+    errorFunctionControl(myFunction);
+    if (value.length === 0) return true;
+    let count = 0;
+    for (let i = 0; i < value.length; i++) {
+        const element = value[i];
+        if (myFunction(value[i])) {
+            count++;
+        }
+        if (value.length === count) return true;
+    }
+
+    return false;
+}
+export function findIndex(value, myFunction) {
+    errorArrayControl(value);
+    errorFunctionControl(myFunction);
+
+    for (let i = 0; i < value.length; i++) {
+        if (myFunction(value[i])) {
+            return i;
+        }
+    }
+    return -1;
 }

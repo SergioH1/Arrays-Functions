@@ -4,7 +4,6 @@ export const errorArrayControl = (value) => {
     }
 };
 export const errorFunctionControl = (value) => {
-    console.log(value);
     if (typeof value !== 'function') {
         throw new Error('Error: Este parametro no es una funcion');
     }
