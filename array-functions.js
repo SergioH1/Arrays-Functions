@@ -106,8 +106,18 @@ export function every(value, myFunction) {
             count++;
         }
         if (value.length === count) return true;
-        console.log(count);
     }
 
     return false;
+}
+export function findIndex(value, myFunction) {
+    errorArrayControl(value);
+    errorFunctionControl(myFunction);
+
+    for (let i = 0; i < value.length; i++) {
+        if (myFunction(value[i])) {
+            return i;
+        }
+    }
+    return -1;
 }

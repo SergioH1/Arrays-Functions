@@ -9,6 +9,7 @@ import {
     filter,
     find,
     every,
+    findIndex,
 } from './array-functions.js';
 
 describe('Given push function', () => {
@@ -221,6 +222,28 @@ describe('Given every function', () => {
             const result = every(array4, myFunction);
 
             expect(result).toBe(true);
+        });
+    });
+});
+
+describe('Given find function', () => {
+    describe('When it is run with array,function', () => {
+        test(`Then it should return a first position element that satisfies 
+        the provided testing function`, () => {
+            const array3 = [2, 3, 11, 23, 2, 15];
+            const myFunction = function isBiggerThan10(i) {
+                return i > 10;
+            };
+            const result = findIndex(array3, myFunction);
+            expect(result).toBe(2);
+        });
+        test('Then it should return a undefined ', () => {
+            const array3 = [2, 3, 1, 2, 2];
+            const myFunction = function isBiggerThan10(i) {
+                return i > 10;
+            };
+            const result = findIndex(array3, myFunction);
+            expect(result).toBe(-1);
         });
     });
 });
