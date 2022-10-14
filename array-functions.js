@@ -23,14 +23,13 @@ export function shift(arrayShift) {
     let counter = 0;
     const item = arrayShift[0];
     if (arrayShift.length === 0) return undefined;
-    else {
-        for (let i = 1; i < arrayShift.length; i++) {
-            arrayShift[counter] = arrayShift[i];
-            counter++;
-        }
-        pop(arrayShift);
-        return item;
+
+    for (let i = 1; i < arrayShift.length; i++) {
+        arrayShift[counter] = arrayShift[i];
+        counter++;
     }
+    pop(arrayShift);
+    return item;
 }
 export function unshift(array, item) {
     const counter = [item];
@@ -66,3 +65,17 @@ export function filter(array, myFunction) {
     }
     return arrayFilter;
 }
+export function forEach(array, myFunction) {
+    for (let i = 0; i < array.length; i++) {
+        myFunction[i];
+    }
+}
+function alphabetPosition(text) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === '') {
+        }
+    }
+    Array.from(text);
+}
+
+console.log(alphabetPosition('test '));

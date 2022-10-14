@@ -105,6 +105,7 @@ describe('Given shift function', () => {
             const array2 = [3, 6, 12, 20];
             const result = shift(array2);
             expect(result).toBe(3);
+            expect(array2).not.toContain(3);
         });
     });
     describe('When it is run with array []', () => {
